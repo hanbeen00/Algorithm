@@ -3,7 +3,6 @@ using namespace std;
 
 int n, m;
 string str;
-string pattern;
 
 int main() {
     ios::sync_with_stdio(false);
@@ -11,19 +10,23 @@ int main() {
 
     cin >> n >> m >> str;
 
-    // 패턴 생성: "IOIOI..." 길이 = 2*n+1
-    for (int i = 0; i < 2 * n + 1; i++) {
-        if (i % 2 == 0) pattern += 'I';
-        else pattern += 'O';
+    int result = 0;
+    int count = 0; 
+
+    for (int i = 1; i < m - 1; i++) {
+        if (str[i-1] == 'I' && str[i] == 'O' && str[i+1] == 'I') {
+            count++;        
+            if (count == n) {
+                result++;  
+                count--;     
+            }
+            i++; 
+        } 
+        else {
+            count = 0; 
+        }
     }
 
-    int count = 0;
-    int pos = str.find(pattern);
-    while (pos != string::npos) {
-        count++;
-        pos = str.find(pattern, pos + 1);
-    }
-
-    cout << count << "\n";
+    cout << result << "\n";
     return 0;
 }
