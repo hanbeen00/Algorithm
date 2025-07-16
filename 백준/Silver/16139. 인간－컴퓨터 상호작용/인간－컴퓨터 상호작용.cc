@@ -2,9 +2,9 @@
 using namespace std;
 
 string s;
-char arr[2005];
+char arr[200005];
 int n;
-int result[2005][26];
+int result[200005][26];
 
 int main() {
     ios::sync_with_stdio(false);
